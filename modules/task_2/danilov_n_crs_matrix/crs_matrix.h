@@ -26,9 +26,6 @@ class CRSMatrix {
     }
 
     inline CRSMatrix<T>(std::size_t m, std::size_t n) {
-        if (m < 0 || n < 0)
-            throw "Error: invalid dimensions.";
-
         rowsNumber = m;
         columnsNumber = n;
         rows.assign(m + 1, 0);
@@ -42,9 +39,6 @@ class CRSMatrix {
 
         std::size_t m = array.size();
         std::size_t n = largestSubarray->size();
-
-        if (m < 0 || n < 0)
-            throw "Error: invalid dimensions.";
 
         rowsNumber = m;
         columnsNumber = n;
@@ -119,9 +113,7 @@ class CRSMatrix {
     }
 
     inline void set(std::size_t m, std::size_t n, const T& value) {
-        if (m < 0 || n < 0)
-            std::cout << "Incorrect coordinates to set: [" << m << ", " << n << "]" << std::endl;
-        else if (m >= rowsNumber)
+        if (m >= rowsNumber)
             resizeRows(m);
         else if (n >= columnsNumber)
             resizeColumns(n);

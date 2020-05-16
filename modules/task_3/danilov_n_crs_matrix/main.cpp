@@ -26,9 +26,9 @@ TEST(CRSMatrix, Test_Correct_Matrix_Multiplication_TBB) {
                                                   { 0.0, 0.0, 3223.71,   0.0, }};
 
     auto result = CRSMatrix<double>(a) * CRSMatrix<double>(b);
-    auto result_omp = tbbMultiply(CRSMatrix<double>(a), CRSMatrix<double>(b));
+    auto result_tbb = tbbMultiply(CRSMatrix<double>(a), CRSMatrix<double>(b));
 
     ASSERT_EQ(result, true_result);
-    ASSERT_EQ(result_omp, true_result);
-    ASSERT_EQ(result, result_omp);
+    ASSERT_EQ(result_tbb, true_result);
+    ASSERT_EQ(result, result_tbb);
 }
